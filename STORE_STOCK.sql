@@ -40,6 +40,9 @@ CONSTRAINT fk_tbSection_tbProduct FOREIGN KEY (section_id)
 REFERENCES tbSection (section_id)
 );
 
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+#flush privileges;
+
 #TESTE MY DATABASE
 INSERT INTO tbStore(store_name, store_owner, email, password) VALUES('Love Bag Store', 'Monalisa Sousa Duarte', 'monalisa_drt@outlook.com', '12345678');
 INSERT INTO tbSection(section_name) VALUES('Produtos de limpeza');
