@@ -46,5 +46,5 @@ REFERENCES tbSection (section_id)
 #TESTE MY DATABASE
 INSERT INTO tbStore(store_name, store_owner, email, password) VALUES('Love Bag Store', 'Monalisa Sousa Duarte', 'monalisa_drt@outlook.com', '12345678');
 INSERT INTO tbSection(section_name) VALUES('Produtos de limpeza');
-INSERT INTO tbEmployee(employee_name, email, section_id) VALUES('Raul Aquino', 'aquinoraul207@gmail.com', 1);
+INSERT INTO tbEmployee(employee_name, email, token_login, section_id) VALUES('Raul Aquino', 'aquinoraul207@gmail.com', 'ASHJG64ASD464ADSAG', 1);
 INSERT INTO tbProduct(product_name, section_id) VALUES('Esponja', 1);
