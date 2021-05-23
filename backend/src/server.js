@@ -1,12 +1,16 @@
 const port = 3030;
 
 const express = require('express');
+const routes = require('./routes');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+
 dotenv.config({ path: 'src/.env' });
 
-
 const server = express();
+
+server.use(express.json());
+server.use(routes);
 
 const db = mysql.createConnection({
     host : process.env.DATABASE_HOST,
@@ -23,12 +27,6 @@ db.connect((error) => {
     } else {
         console.log("🚀 ~ MYSQL Connected...")
     }
-});
-
-server.use(express.json());
-
-server.get('/', (req, res) => {
-    return res.json({ message: `🚀 API for the APS class project. https://github.com/RaulAquino207/store-stock-aps` });
 });
 
 server.listen(port, () => {
