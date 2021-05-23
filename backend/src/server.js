@@ -1,6 +1,7 @@
 const port = 3030;
 
 const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
@@ -9,6 +10,7 @@ dotenv.config({ path: 'src/.env' });
 
 const server = express();
 
+server.use(cors());
 server.use(express.json());
 server.use(routes);
 
