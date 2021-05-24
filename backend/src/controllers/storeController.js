@@ -1,4 +1,9 @@
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+
+dotenv.config({ path: 'src/.env' });
 
 const db = mysql.createConnection({
     host : process.env.DATABASE_HOST,
@@ -8,9 +13,26 @@ const db = mysql.createConnection({
 });
 
 module.exports = {
-    store (req, res) {
-        const { store_name, store_owner, email, password } = req.body;
+    store(req, res) {
+        const { store_name, store_owner, email, password, password_confirm } = req.body;
+        db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
+            if (err) throw err;
+            if (result.length > 0){
+                return res.json({message : 'That email is already in use'})
+            }
+            else if (password !== password_confirm){
+                return res.json({message : 'Password do not match'})
+            }
 
-        return res.json({store_name, store_owner, email, password})
+            let hashedPassword = await bcrypt.hash(password, 8);
+            console.log(hashedPassword);
+
+            db.query(`INSERT INTO tbStore(store_name, store_owner, email, password) VALUES('${store_name}', '${store_owner}', '${email}', '${hashedPassword}');`, function (err, result) {
+                if (err) throw err;
+                return res.json({message : 'User registered'})
+              });
+
+          });
+          
     }
 }
