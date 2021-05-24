@@ -1,4 +1,4 @@
-const port = 3030;
+const port = 3333;
 
 const express = require('express');
 const cors = require('cors');
@@ -20,8 +20,6 @@ const db = mysql.createConnection({
     password : process.env.DATABASE_PASSWORD,
     database : process.env.DATABASE
 });
-
-console.log(process.env.DATABASE_PASSWORD)
 
 db.connect((error) => {
     if(error){
