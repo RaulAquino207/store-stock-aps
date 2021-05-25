@@ -15,14 +15,14 @@ module.exports = {
         const { product_name, section_id } = req.body;
         db.query(`INSERT INTO tbProduct(product_name, section_id) VALUES('${product_name}', ${section_id});`, function (err, result) {
             if (err) throw err;
-            res.json({result})
+            return res.json({message : 'Product registered'});
           });
     },
 
     index(req, res) {
         db.query("SELECT * FROM store_stock_aps.tbproduct;", function (err, result) {
           if (err) throw err;
-          res.json({result})
+          return res.json({result});
         });
     }
 }

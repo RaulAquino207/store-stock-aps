@@ -23,14 +23,14 @@ module.exports = {
 
         db.query(`INSERT INTO tbEmployee(employee_name, email, token_login, section_id) VALUES('${employee_name}', '${email}', '${initial_name + token_login}', ${section_id});`, function (err, result) {
             if (err) throw err;
-            res.json({result})
+            res.json({message : 'Employee registered'});
           });
     },
 
     index(req, res) {
         db.query("SELECT * FROM store_stock_aps.tbemployee;", function (err, result) {
           if (err) throw err;
-          res.json({result})
+          res.json({result});
         });
     }
 }

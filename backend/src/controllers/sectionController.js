@@ -13,17 +13,16 @@ const db = mysql.createConnection({
 module.exports = {
     store(req, res) {
         const { section_name } = req.body;
-
         db.query(`INSERT INTO tbSection(section_name) VALUES('${section_name}');`, function (err, result) {
             if (err) throw err;
-            res.json({result})
+            return res.json({message : 'Section registered'});
           });
     },
 
     index(req, res) {
         db.query("SELECT * FROM store_stock_aps.tbsection;", function (err, result) {
           if (err) throw err;
-          res.json({result})
+          res.json({result});
         });
     }
 

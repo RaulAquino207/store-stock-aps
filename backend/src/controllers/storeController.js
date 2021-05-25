@@ -18,10 +18,10 @@ module.exports = {
         db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
             if (err) throw err;
             if (result.length > 0){
-                return res.json({message : 'That email is already in use'})
+                return res.json({message : 'That email is already in use'});
             }
             else if (password !== password_confirm){
-                return res.json({message : 'Password do not match'})
+                return res.json({message : 'Password do not match'});
             }
 
             let hashedPassword = await bcrypt.hash(password, 8);
@@ -29,7 +29,7 @@ module.exports = {
 
             db.query(`INSERT INTO tbStore(store_name, store_owner, email, password) VALUES('${store_name}', '${store_owner}', '${email}', '${hashedPassword}');`, function (err, result) {
                 if (err) throw err;
-                return res.json({message : 'User registered'})
+                return res.json({message : 'User registered'});
               });
 
           });

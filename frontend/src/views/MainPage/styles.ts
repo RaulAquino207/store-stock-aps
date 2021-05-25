@@ -1,13 +1,6 @@
-.App {
-  text-align: center;
-}
+import styled from 'styled-components';
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
+export const Styles: any = styled.div`
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -16,8 +9,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
+`;

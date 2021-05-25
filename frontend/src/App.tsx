@@ -1,14 +1,9 @@
 import React from 'react';
-import logo from './assets/logo.png';
-import './App.css';
+import Routes from './routes/routes'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="logo" className="App-logo"/>
-      </header>
-    </div>
+    <Routes/>
   );
 }
 

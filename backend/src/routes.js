@@ -11,13 +11,13 @@ routes.get('/', (req, res) => {
 
 routes.post('/store', storeController.store);
 
-routes.post('/products', productController.store)
-routes.get('/products', productController.index)
+routes.post('/products', productController.store);
+routes.get('/products', productController.index);
 
-routes.post('/section', sectionController.store)
-routes.get('/section', sectionController.index)
+routes.post('/section', sectionController.store);
+routes.get('/section', sectionController.index);
 
-routes.post('/employee', employeeController.store)
-routes.get('/employee', employeeController.index)
+routes.post('/employee', employeeController.store);
+routes.get('/employee', employeeController.index);
 
 module.exports = routes;
