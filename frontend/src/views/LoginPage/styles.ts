@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Styles: any = styled.div`
-    .home-container {
+    .login-container {
         text-align: center;
         background-color: #141e30;
         min-height: 100vh;
@@ -13,7 +13,7 @@ export const Styles: any = styled.div`
         /* display: flex; */
     }
 
-    .home-nav {
+    .login-nav {
         background-color: #243b55;
         padding: 5px 60px;
         display: flex;
@@ -48,12 +48,43 @@ export const Styles: any = styled.div`
         pointer-events: none;
     }
 
-    .link {
-        color: #61dafb;
-        text-decoration:none;
+    .login-container form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+
+    .login-container form input {
+        margin-top: 10px;
+        border: 1px #61dafb;
+        border-radius: 4px;
+        height: 48px;
+        padding: 0 35px;
+        font-size: 16px;
+        color: #666;
     }
 
-    .link:hover {
-        color: #f7dda4;
+    /* .input {
+        display: none
+    } */
+
+    .login-container form input ::placeholder {
+    color: #999999;
+}
+
+    .login-container form button[type=submit] {
+        margin-top: 10px;
+        border: 0;
+        border-radius: 4px;
+        height: 48px;
+        font-size: 16px;
+        background: #61dafb;
+        font-weight: bold;
+        padding: 0 60px;
+        color: #FFF;
+        cursor: pointer;
     }
+
+
 `;
