@@ -93,7 +93,7 @@ const LoginPage: React.FC = () => {
                 className="owner-input"
                 type="text"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
-                placeholder="Digite seu email"
+                placeholder="Type your e-mail"
                 value={UsernameOwner}
                 onChange={ e => setUsernameOwner(e.target.value)}
             />
@@ -101,7 +101,7 @@ const LoginPage: React.FC = () => {
                 className="owner-input"
                 type="text"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
-                placeholder="Digite sua senha"
+                placeholder="Type your password"
                 value={Password}
                 onChange={ e => setPassword(e.target.value)}
             />
@@ -109,11 +109,11 @@ const LoginPage: React.FC = () => {
                 className="employee-input"
                 type="text"
                 style={state.checkedC ? {display : `none`} : {display : `flex`}}
-                placeholder="Digite seu token"
+                placeholder="Type your token"
                 value={TokenEmployee}
                 onChange={ e => setTokenEmployee(e.target.value)}
             />
-            <button type="submit">Enviar</button>
+            <button type="submit">Sign In</button>
         </form>
     </div>
 
