@@ -10,7 +10,7 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/store', storeController.store);
-routes.post('/store', storeController.login);
+routes.post('/login', storeController.login);
 
 routes.post('/products', productController.store);
 routes.get('/products', productController.index);

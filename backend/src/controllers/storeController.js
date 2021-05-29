@@ -14,6 +14,20 @@ const db = mysql.createConnection({
 
 module.exports = {
     store(req, res) {
+
+        function randID() {
+            let randomNum = Math.random() * (99999 - 10000) + 10000;
+            return Math.floor(randomNum);
+          }
+
+        var store_id = randID();
+
+        db.query(`SELECT * FROM store_stock_aps.tbstore WHERE store_id = '${store_id}';`, async function (err, result) {
+            if(result.length > 0){
+                store_id = randID();
+            }
+        });
+
         const { store_name, store_owner, email, password, password_confirm } = req.body;
         db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
             if (err) throw err;
@@ -27,13 +41,11 @@ module.exports = {
             let hashedPassword = await bcrypt.hash(password, 8);
             console.log(hashedPassword);
 
-            db.query(`INSERT INTO tbStore(store_name, store_owner, email, password) VALUES('${store_name}', '${store_owner}', '${email}', '${hashedPassword}');`, function (err, result) {
+            db.query(`INSERT INTO tbStore(store_id, store_name, store_owner, email, password) VALUES('${store_id}', '${store_name}', '${store_owner}', '${email}', '${hashedPassword}');`, function (err, result) {
                 if (err) throw err;
                 return res.json({message : 'User registered'});
               });
-
-          });
-          
+          }); 
     },
 
     login(req, res) {
@@ -42,17 +54,19 @@ module.exports = {
             if(!email || !password){
                 return res.status(400).json({message : 'Please provide an email and passaword'})
             }
+
             db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
                 if (err) throw err;
                 if (!result || !(await bcrypt.compare(password, result[0].password))){
                     res.status(401).json({message : 'Email or Password is incorrect'})
+                } else {
+                    const id = result[0].store_id;
+                    res.status(200).json({ id });
                 }
-    
             });
 
         } catch (error) {
             console.log(error)
         }
-        
     }
 }
