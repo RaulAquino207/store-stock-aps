@@ -3,6 +3,7 @@ import { Styles } from "./styles";
 import logo from '../../assets/logo.png';
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import Nav from '../../components/Nav';
 
 // import { Container } from './styles';
 
@@ -35,14 +36,8 @@ const RegisterPage: React.FC = () => {
     }
   return <Styles>
       <div className="register-container">
-      <nav className="register-nav">
-            <ul>
-                <li> <a href="/"> Home </a> </li>
-                <li> <a href="/login"> Login </a> </li>
-                <li> <a href="/register"> Store Register </a> </li>
-            </ul>
-            </nav>
-            <form onSubmit={handleSubmit}>
+        <Nav/>
+        <form onSubmit={handleSubmit}>
             <img src={logo} className="logo" alt="logo"/>
             <input
                 type="text"

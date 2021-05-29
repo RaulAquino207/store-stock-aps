@@ -7,6 +7,7 @@ import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import api from '../../services/api';
+import Nav from '../../components/Nav';
 
 // import { Container } from './styles';
 
@@ -71,13 +72,7 @@ const LoginPage: React.FC = () => {
 
   return <Styles>
       <div className="login-container">
-      <nav className="login-nav">
-            <ul>
-                <li> <a href="/"> Home </a> </li>
-                <li> <a href="/login"> Login </a> </li>
-                <li> <a href="/register"> Store Register </a> </li>
-            </ul>
-        </nav>
+        <Nav/>
         <form onSubmit={handleSubmit}>
             <img src={logo} className="logo" alt="logo"/>
             <p> {String(state.checkedC ? 'Owner' : 'Employee')} </p>
