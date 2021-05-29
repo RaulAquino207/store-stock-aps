@@ -18,7 +18,7 @@ routes.get('/products', productController.index);
 routes.post('/section', sectionController.store);
 routes.get('/section', sectionController.index);
 
-routes.post('/employee', employeeController.store);
+routes.post('/employee/:id', employeeController.store);
 routes.get('/employee', employeeController.index);
 
 module.exports = routes;
