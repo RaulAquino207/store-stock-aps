@@ -34,5 +34,25 @@ module.exports = {
 
           });
           
+    },
+
+    login(req, res) {
+        try {
+            const { email, password } = req.body;
+            if(!email || !password){
+                return res.status(400).json({message : 'Please provide an email and passaword'})
+            }
+            db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
+                if (err) throw err;
+                if (!result || !(await bcrypt.compare(password, result[0].password))){
+                    res.status(401).json({message : 'Email or Password is incorrect'})
+                }
+    
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
 }

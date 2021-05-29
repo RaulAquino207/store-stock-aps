@@ -6,11 +6,12 @@ import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import api from '../../services/api';
 
 // import { Container } from './styles';
 
 const LoginPage: React.FC = () => {
-    const [UsernameOwner, setUsernameOwner] = useState('');
+    const [usernameOwner, setUsernameOwner] = useState('');
     const [TokenEmployee, setTokenEmployee] = useState('');
     const [Password, setPassword] = useState('');
 
@@ -58,7 +59,7 @@ const LoginPage: React.FC = () => {
 
     const history = useHistory();
 
-    function handleSubmit(e: any){
+    async function handleSubmit(e: any){
         e.preventDefault();
         history.push('/main');
         
@@ -94,12 +95,12 @@ const LoginPage: React.FC = () => {
                 type="text"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your e-mail"
-                value={UsernameOwner}
+                value={usernameOwner}
                 onChange={ e => setUsernameOwner(e.target.value)}
             />
             <input
                 className="owner-input"
-                type="text"
+                type="password"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your password"
                 value={Password}

@@ -2,22 +2,36 @@ import React, { useState } from 'react';
 import { Styles } from "./styles";
 import logo from '../../assets/logo.png';
 import { useHistory } from 'react-router-dom';
+import api from '../../services/api';
 
 // import { Container } from './styles';
 
 const RegisterPage: React.FC = () => {
 
-    const [UsernameOwner, setUsernameOwner] = useState('');
-    const [NameStore, setNameStore] = useState('');
-    const [EmailOwner, setEmailOwner] = useState('');
-    const [Password, setPassword] = useState('');
-
+    const [usernameOwner, setUsernameOwner] = useState('');
+    const [nameStore, setNameStore] = useState('');
+    const [emailOwner, setEmailOwner] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+    
     const history = useHistory();
-
-    function handleSubmit(e: any){
+    
+    async function handleSubmit(e: any){
         e.preventDefault();
-        history.push('/main');
         
+        const reponse = await api.post('/store', {
+            store_name : nameStore,
+            store_owner : usernameOwner,
+            email : emailOwner,
+            password : password,
+            password_confirm : passwordConfirm
+              });
+            
+            console.log("🚀 ~ file: index.tsx ~ line 29 ~ handleSubmit ~ reponse", reponse.data);
+            alert(reponse.data['message']);
+            
+            history.push('/login');
+            
     }
   return <Styles>
       <div className="register-container">
@@ -33,26 +47,32 @@ const RegisterPage: React.FC = () => {
             <input
                 type="text"
                 placeholder="Enter your full name"
-                value={UsernameOwner}
+                value={usernameOwner}
                 onChange={ e => setUsernameOwner(e.target.value)}
             />
             <input
                 type="text"
                 placeholder="Enter your store name"
-                value={NameStore}
+                value={nameStore}
                 onChange={ e => setNameStore(e.target.value)}
             />
             <input
                 type="text"
                 placeholder="Type your e-mail"
-                value={EmailOwner}
+                value={emailOwner}
                 onChange={ e => setEmailOwner(e.target.value)}
             />
             <input
-                type="text"
+                type="password"
                 placeholder="Type your password"
-                value={Password}
+                value={password}
                 onChange={ e => setPassword(e.target.value)}
+            />
+            <input
+                type="password"
+                placeholder="Confirm your password"
+                value={passwordConfirm}
+                onChange={ e => setPasswordConfirm(e.target.value)}
             />
             <button type="submit">Sign Up</button>
         </form>
