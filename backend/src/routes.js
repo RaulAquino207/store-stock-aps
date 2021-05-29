@@ -12,12 +12,13 @@ routes.get('/', (req, res) => {
 routes.post('/store', storeController.store);
 routes.post('/login', storeController.login);
 
-routes.post('/products', productController.store);
+routes.post('/products/:id', productController.store);
 routes.get('/products', productController.index);
 
-routes.post('/section', sectionController.store);
+routes.post('/section/:id', sectionController.store);
 routes.get('/section', sectionController.index);
 
+routes.post('/employee/login', employeeController.login);
 routes.post('/employee/:id', employeeController.store);
 routes.get('/employee', employeeController.index);
 

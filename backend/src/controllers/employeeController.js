@@ -21,8 +21,8 @@ module.exports = {
             return Math.random().toString(36).slice(-7);
         }
 
-        var initial_name = employee_name.split(' ')[0].toLowerCase()
-        var token_login = generateToken()
+        var initial_name = employee_name.split(' ')[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        var token_login = generateToken();
 
         db.query(`INSERT INTO tbEmployee(employee_name, email, token_login, section_id, store_id) VALUES('${employee_name}', '${email}', '${initial_name + token_login}', ${section_id}, ${id});`, function (err, result) {
             if (err) throw err;
@@ -35,5 +35,26 @@ module.exports = {
           if (err) throw err;
           res.json({result});
         });
+    },
+
+    login(req,res) {
+        try {
+            const { token_login } = req.body;
+            if(!token_login){
+                return res.status(400).json({message : 'Please provide an token_login'})
+            }
+            db.query(`SELECT * FROM store_stock_aps.tbemployee WHERE token_login = '${token_login}';`, async function (err, result) {
+                if (err) throw err;
+                if (result.length == 0){
+                    res.status(401).json({message : 'Token Login is incorrect'});
+                } else {
+                    const id = result[0].store_id;
+                    res.status(200).json({ id });
+                }
+            });
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 }

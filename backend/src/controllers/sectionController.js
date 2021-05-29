@@ -12,8 +12,9 @@ const db = mysql.createConnection({
 
 module.exports = {
     store(req, res) {
+        const { id } = req.params;
         const { section_name } = req.body;
-        db.query(`INSERT INTO tbSection(section_name) VALUES('${section_name}');`, function (err, result) {
+        db.query(`INSERT INTO tbSection(section_name, store_id) VALUES('${section_name}', ${id});`, function (err, result) {
             if (err) throw err;
             return res.json({message : 'Section registered'});
           });

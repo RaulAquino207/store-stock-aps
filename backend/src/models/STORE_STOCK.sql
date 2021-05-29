@@ -15,7 +15,7 @@ CREATE TABLE tbSection
 (section_id INT AUTO_INCREMENT,
 section_name VARCHAR(100) NOT NULL,
 
-store_id INT,
+store_id INT NOT NULL,
 PRIMARY KEY (section_id),
 
 CONSTRAINT fk_tbStore_tbSection FOREIGN KEY (store_id)

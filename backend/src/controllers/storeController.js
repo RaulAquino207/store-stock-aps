@@ -57,7 +57,8 @@ module.exports = {
 
             db.query(`SELECT * FROM store_stock_aps.tbstore WHERE email = '${email}';`, async function (err, result) {
                 if (err) throw err;
-                if (!result || !(await bcrypt.compare(password, result[0].password))){
+
+                if (result.length == 0 || !(await bcrypt.compare(password, result[0].password))){
                     res.status(401).json({message : 'Email or Password is incorrect'})
                 } else {
                     const id = result[0].store_id;
