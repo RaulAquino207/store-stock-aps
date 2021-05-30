@@ -37,6 +37,12 @@ export const Styles: any = styled.div`
         align-items: center;
     }
 
+    .register-container legend {
+        background-color: #61dafb;
+        border-radius: 4px;
+        border-color: #FFF;
+    }
+
     .register-container form input {
         margin-top: 10px;
         border: 1px #61dafb;

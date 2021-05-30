@@ -32,6 +32,12 @@ export const Styles: any = styled.div`
         background-color: #243b55;
     }
 
+    .login-container legend {
+        background-color: #61dafb;
+        border-radius: 4px;
+        border-color: #FFF;
+    }
+
     .login-container form input {
         margin-top: 10px;
         border: 1px #61dafb;

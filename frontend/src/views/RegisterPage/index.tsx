@@ -30,9 +30,14 @@ const RegisterPage: React.FC = () => {
             
             console.log("🚀 ~ file: index.tsx ~ line 29 ~ handleSubmit ~ reponse", reponse.data);
             alert(reponse.data['message']);
-            
-            history.push('/login');
-            
+
+            if (reponse.data['message'] == 'Password do not match' || reponse.data['message'] == 'That email is already in use'){
+                history.push('/register');
+            } else if (reponse.data['message'] == 'User registered'){
+                history.push('/login');
+            } else {
+                history.push('/register');
+            }
     }
   return <Styles>
       <div className="register-container">
@@ -74,7 +79,6 @@ const RegisterPage: React.FC = () => {
             <button type="submit">Sign Up</button>
             </fieldset>
         </form>
-
       </div>
   </Styles>;
 }
