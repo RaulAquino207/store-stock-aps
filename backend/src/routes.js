@@ -9,8 +9,8 @@ routes.get('/', (req, res) => {
     return res.json({ message: `🚀 API for the APS class project. https://github.com/RaulAquino207/store-stock-aps` });
 });
 
+routes.post('/store/login', storeController.login);
 routes.post('/store', storeController.store);
-routes.post('/login', storeController.login);
 
 routes.post('/products/:id', productController.store);
 routes.get('/products', productController.index);

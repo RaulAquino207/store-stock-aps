@@ -31,9 +31,9 @@ const RegisterPage: React.FC = () => {
             console.log("🚀 ~ file: index.tsx ~ line 29 ~ handleSubmit ~ reponse", reponse.data);
             alert(reponse.data['message']);
 
-            if (reponse.data['message'] == 'Password do not match' || reponse.data['message'] == 'That email is already in use'){
+            if (reponse.data['message'] === 'Password do not match' || reponse.data['message'] === 'That email is already in use'){
                 history.push('/register');
-            } else if (reponse.data['message'] == 'User registered'){
+            } else if (reponse.data['message'] === 'User registered'){
                 history.push('/login');
             } else {
                 history.push('/register');

@@ -12,7 +12,7 @@ import Nav from '../../components/Nav';
 // import { Container } from './styles';
 
 const LoginPage: React.FC = () => {
-    const [usernameOwner, setUsernameOwner] = useState('');
+    const [EmailOwner, setEmailOwner] = useState('');
     const [TokenEmployee, setTokenEmployee] = useState('');
     const [Password, setPassword] = useState('');
 
@@ -62,7 +62,28 @@ const LoginPage: React.FC = () => {
 
     async function handleSubmit(e: any){
         e.preventDefault();
-        history.push('/main');
+
+        console.log(EmailOwner, Password);
+        console.log(TokenEmployee);
+
+        try{
+          const reponse = await api.post('/employee/login', {
+            token_login : TokenEmployee
+              });
+              console.log(reponse.data['id']);
+              history.push(`/main/${reponse.data['id']}`);
+        } catch(error) {
+          alert(error.response.data.message);
+        }
+        
+        
+        // console.log("🚀 ~ file: index.tsx ~ line 70 ~ handleSubmit ~ reponse_store", reponse_store);
+        // console.log("🚀 ~ file: index.tsx ~ line 75 ~ handleSubmit ~ reponse_employee", reponse_employee);
+        // alert(reponse_store.data['message']);
+
+        // if (reponse_store.data['message'] === 'Please provide an email and passaword' || reponse_store.data['message'] === 'Email or Password is incorrect'){
+        //   history.push('/login');
+        // }
         
     }
 
@@ -92,8 +113,8 @@ const LoginPage: React.FC = () => {
                 type="text"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your e-mail"
-                value={usernameOwner}
-                onChange={ e => setUsernameOwner(e.target.value)}
+                value={EmailOwner}
+                onChange={ e => setEmailOwner(e.target.value)}
             />
             <input
                 type="password"

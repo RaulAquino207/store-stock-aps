@@ -10,7 +10,7 @@ import Register from '../views/RegisterPage';
 const routes: React.FC = () => {
   return (<BrowserRouter>
   <Route path="/" exact component={Home}/>
-  <Route path="/main" component={Main}/>
+  <Route path="/main/:id" component={Main}/>
   <Route path="/login" component={Login}/>
   <Route path="/register" component={Register}/>
   </BrowserRouter>);
