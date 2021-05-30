@@ -76,6 +76,7 @@ const LoginPage: React.FC = () => {
         <form onSubmit={handleSubmit}>
             <img src={logo} className="logo" alt="logo"/>
             <p> {String(state.checkedC ? 'Owner' : 'Employee')} </p>
+           
             <Typography component="div">
                 <Grid component="label" container alignItems="center" spacing={1}>
                 <Grid item>Employee</Grid>
@@ -85,8 +86,9 @@ const LoginPage: React.FC = () => {
                 <Grid item>Owner</Grid>
                 </Grid>
             </Typography>
+            <fieldset>
+            <legend>login</legend>
             <input
-                className="owner-input"
                 type="text"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your e-mail"
@@ -94,7 +96,6 @@ const LoginPage: React.FC = () => {
                 onChange={ e => setUsernameOwner(e.target.value)}
             />
             <input
-                className="owner-input"
                 type="password"
                 style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your password"
@@ -102,7 +103,6 @@ const LoginPage: React.FC = () => {
                 onChange={ e => setPassword(e.target.value)}
             />
             <input
-                className="employee-input"
                 type="text"
                 style={state.checkedC ? {display : `none`} : {display : `flex`}}
                 placeholder="Type your token"
@@ -110,6 +110,7 @@ const LoginPage: React.FC = () => {
                 onChange={ e => setTokenEmployee(e.target.value)}
             />
             <button type="submit">Sign In</button>
+            </fieldset>
         </form>
     </div>
 

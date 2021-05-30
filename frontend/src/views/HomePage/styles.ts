@@ -13,6 +13,20 @@ export const Styles: any = styled.div`
         /* display: flex; */
     }
 
+    .home-container fieldset {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #FFF;
+        border-radius: 15px;
+        background-color: #243b55;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
     .logo {
         height: 40vmin;
         pointer-events: none;

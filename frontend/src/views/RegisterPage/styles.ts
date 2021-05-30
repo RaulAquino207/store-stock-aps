@@ -13,36 +13,6 @@ export const Styles: any = styled.div`
         /* display: flex; */
     }
 
-    .register-nav {
-        background-color: #243b55;
-        padding: 5px 60px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 15px;
-
-        ul {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 8px;
-        }
-
-        li a:hover {
-            color: #f7dda4;
-            text-decoration: none;
-        }
-    }
-
     .logo {
         height: 40vmin;
         pointer-events: none;
@@ -53,7 +23,19 @@ export const Styles: any = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-}
+    }
+
+    .register-container fieldset {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #FFF;
+        border-radius: 15px;
+        background-color: #243b55;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     .register-container form input {
         margin-top: 10px;

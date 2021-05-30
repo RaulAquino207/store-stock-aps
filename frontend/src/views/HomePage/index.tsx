@@ -8,13 +8,16 @@ import Nav from '../../components/Nav'
 const LoginPage: React.FC = () => {
   return (
       <Styles>
-        <div className="home-container">
-        <Nav/>
-        <img src={logo} alt="logo" className="logo"/>
-        <h2> Welcome to the store stock home page! </h2>
-        <p> This web site aims to complete the project proposed by the APS class and organize your business 🤝</p>
-        <p> Visit the repository on <a href="https://github.com/RaulAquino207/store-stock-aps" className="link">github 👈</a> </p>
-        </div>
+        
+          <div className="home-container">
+          <Nav/>
+          <img src={logo} alt="logo" className="logo"/>
+          <fieldset>
+            <h2> Welcome to the store stock home page! </h2>
+            <p> This web site aims to complete the project proposed by the APS class and organize your business 🤝</p>
+            <p> Visit the repository on <a href="https://github.com/RaulAquino207/store-stock-aps" className="link" target="_blank">github 👈</a> </p>
+          </fieldset>
+          </div>
       </Styles>
   );
 }

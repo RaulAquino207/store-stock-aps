@@ -39,6 +39,8 @@ const RegisterPage: React.FC = () => {
         <Nav/>
         <form onSubmit={handleSubmit}>
             <img src={logo} className="logo" alt="logo"/>
+            <fieldset>
+            <legend>register</legend>
             <input
                 type="text"
                 placeholder="Enter your full name"
@@ -70,6 +72,7 @@ const RegisterPage: React.FC = () => {
                 onChange={ e => setPasswordConfirm(e.target.value)}
             />
             <button type="submit">Sign Up</button>
+            </fieldset>
         </form>
 
       </div>

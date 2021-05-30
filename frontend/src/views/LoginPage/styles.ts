@@ -23,7 +23,14 @@ export const Styles: any = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-}
+    }
+    .login-container fieldset {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #FFF;
+        border-radius: 15px;
+        background-color: #243b55;
+    }
 
     .login-container form input {
         margin-top: 10px;
