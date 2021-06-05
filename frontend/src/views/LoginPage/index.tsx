@@ -60,7 +60,7 @@ const LoginPage: React.FC = () => {
 
     const history = useHistory();
 
-    async function handleSubmit(e: any){
+    async function handleSubmitEmployee(e: any){
         e.preventDefault();
 
         console.log(EmailOwner, Password);
@@ -87,6 +87,34 @@ const LoginPage: React.FC = () => {
         
     }
 
+    async function handleSubmitStore(e: any){
+      e.preventDefault();
+
+      console.log(EmailOwner, Password);
+      console.log(TokenEmployee);
+
+      try{
+        const reponse = await api.post('/store/login', {
+          email : EmailOwner,
+          password : Password
+            });
+            console.log(reponse.data['id']);
+            history.push(`/main/${reponse.data['id']}`);
+      } catch(error) {
+        alert(error.response.data.message);
+      }
+      
+      
+      // console.log("🚀 ~ file: index.tsx ~ line 70 ~ handleSubmit ~ reponse_store", reponse_store);
+      // console.log("🚀 ~ file: index.tsx ~ line 75 ~ handleSubmit ~ reponse_employee", reponse_employee);
+      // alert(reponse_store.data['message']);
+
+      // if (reponse_store.data['message'] === 'Please provide an email and passaword' || reponse_store.data['message'] === 'Email or Password is incorrect'){
+      //   history.push('/login');
+      // }
+      
+  }
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setState({ ...state, [event.target.name]: event.target.checked });
         };
@@ -94,12 +122,11 @@ const LoginPage: React.FC = () => {
   return <Styles>
       <div className="login-container">
         <Nav/>
-        <form onSubmit={handleSubmit}>
-            <img src={logo} className="logo" alt="logo"/>
+        <img src={logo} className="logo" alt="logo"/>
             <p> {String(state.checkedC ? 'Owner' : 'Employee')} </p>
            
             <Typography component="div">
-                <Grid component="label" container alignItems="center" spacing={1}>
+                <Grid component="label" container alignItems="center" justify="center" spacing={1}>
                 <Grid item>Employee</Grid>
                 <Grid item>
                     <AntSwitch checked={state.checkedC} onChange={handleChange} name="checkedC" />
@@ -107,25 +134,33 @@ const LoginPage: React.FC = () => {
                 <Grid item>Owner</Grid>
                 </Grid>
             </Typography>
-            <fieldset>
+
+        <form onSubmit={handleSubmitStore} >
+            
+            <fieldset style={state.checkedC ? {display : `none`} : {display : `flex`}}>
             <legend>login</legend>
             <input
                 type="text"
-                style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your e-mail"
                 value={EmailOwner}
                 onChange={ e => setEmailOwner(e.target.value)}
             />
-            <input
+                        <input
                 type="password"
-                style={state.checkedC ? {display : `flex`} : {display : `none`}}
                 placeholder="Type your password"
                 value={Password}
                 onChange={ e => setPassword(e.target.value)}
             />
+            <button type="submit">Sign In</button>
+            </fieldset>
+        </form>
+
+        <form onSubmit={handleSubmitEmployee}>           
+            <fieldset style={state.checkedC ? {display : `flex`} : {display : `none`}}>
+            <legend>login</legend>
+
             <input
                 type="text"
-                style={state.checkedC ? {display : `none`} : {display : `flex`}}
                 placeholder="Type your token"
                 value={TokenEmployee}
                 onChange={ e => setTokenEmployee(e.target.value)}
@@ -133,6 +168,8 @@ const LoginPage: React.FC = () => {
             <button type="submit">Sign In</button>
             </fieldset>
         </form>
+
+
     </div>
 
   </Styles>;

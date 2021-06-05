@@ -10,7 +10,9 @@ export const Styles: any = styled.div`
         font-size: calc(10px + 2vmin);
         align-items: center;
         justify-content: center;
+        overflow: hidden;
         /* display: flex; */
+        
     }
 
     .logo {
@@ -20,9 +22,9 @@ export const Styles: any = styled.div`
 
     .login-container form {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     .login-container fieldset {
         border-width: 3px;
@@ -30,12 +32,21 @@ export const Styles: any = styled.div`
         border-color: #FFF;
         border-radius: 15px;
         background-color: #243b55;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
     .login-container legend {
         background-color: #61dafb;
         border-radius: 4px;
         border-color: #FFF;
+    }
+
+    .workaround {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
     .login-container form input {
@@ -46,6 +57,9 @@ export const Styles: any = styled.div`
         padding: 0 35px;
         font-size: 16px;
         color: #666;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
     /* .input {
