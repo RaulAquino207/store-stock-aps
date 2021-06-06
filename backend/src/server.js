@@ -5,6 +5,7 @@ const cors = require('cors');
 const routes = require('./routes');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: 'src/.env' });
 
@@ -13,6 +14,7 @@ const server = express();
 server.use(cors());
 server.use(express.urlencoded( {extended:false} ));
 server.use(express.json());
+server.use(cookieParser());
 server.use(routes);
 
 const db = mysql.createConnection({
