@@ -137,7 +137,7 @@ const LoginPage: React.FC = () => {
 
         <form onSubmit={handleSubmitStore} >
             
-            <fieldset style={state.checkedC ? {display : `none`} : {display : `flex`}}>
+            <fieldset style={state.checkedC ? {display : `flex`} : {display : `none`}}>
             <legend>login</legend>
             <input
                 type="text"
@@ -156,7 +156,7 @@ const LoginPage: React.FC = () => {
         </form>
 
         <form onSubmit={handleSubmitEmployee}>           
-            <fieldset style={state.checkedC ? {display : `flex`} : {display : `none`}}>
+            <fieldset style={state.checkedC ? {display : `none`} : {display : `flex`}}>
             <legend>login</legend>
 
             <input
