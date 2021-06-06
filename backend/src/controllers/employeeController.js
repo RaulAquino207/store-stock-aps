@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
 dotenv.config({ path: 'src/.env' });
 
@@ -49,7 +50,22 @@ module.exports = {
                     res.status(401).json({message : 'Token Login is incorrect'});
                 } else {
                     const id = result[0].store_id;
-                    res.status(200).json({ id });
+
+                    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    });
+
+                    console.log("The token is: ", token);
+
+                    const cookieOptions = {
+                        expires: new Date(
+                            Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60
+                        ),
+                        httpOnly: true
+                    }
+
+                    res.cookie('jwt', token, cookieOptions);
+                    res.status(200).json({ token });
                 }
             });
 
