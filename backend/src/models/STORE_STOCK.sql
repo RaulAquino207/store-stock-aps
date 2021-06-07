@@ -42,6 +42,7 @@ REFERENCES tbStore (store_id)
 CREATE TABLE tbProduct
 (product_id INT AUTO_INCREMENT, 
 product_name VARCHAR(100) NOT NULL,
+product_image VARCHAR(300),
 
 section_id INT,
 store_id INT,

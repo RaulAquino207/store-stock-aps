@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const dotenv = require('dotenv');
+const jwt = require('jsonwebtoken');
 
 dotenv.config({ path: 'src/.env' });
 
@@ -21,7 +22,10 @@ module.exports = {
     },
 
     index(req, res) {
-        db.query("SELECT * FROM store_stock_aps.tbproduct;", function (err, result) {
+        const token = req.headers.authorization.split(" ")[1];
+        const { id } = jwt.verify(token, process.env.JWT_SECRET);
+
+        db.query(`SELECT * FROM store_stock_aps.tbproduct WHERE store_id = ${id};`, function (err, result) {
           if (err) throw err;
           return res.json({result});
         });

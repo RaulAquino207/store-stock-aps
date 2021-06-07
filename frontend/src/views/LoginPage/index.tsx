@@ -70,20 +70,13 @@ const LoginPage: React.FC = () => {
           const reponse = await api.post('/employee/login', {
             token_login : TokenEmployee
               });
+
+              localStorage.setItem("token", reponse.data['token']);
               console.log(reponse.data['id']);
               history.push(`/main/${reponse.data['id']}`);
         } catch(error) {
           alert(error.response.data.message);
         }
-        
-        
-        // console.log("🚀 ~ file: index.tsx ~ line 70 ~ handleSubmit ~ reponse_store", reponse_store);
-        // console.log("🚀 ~ file: index.tsx ~ line 75 ~ handleSubmit ~ reponse_employee", reponse_employee);
-        // alert(reponse_store.data['message']);
-
-        // if (reponse_store.data['message'] === 'Please provide an email and passaword' || reponse_store.data['message'] === 'Email or Password is incorrect'){
-        //   history.push('/login');
-        // }
         
     }
 
@@ -98,20 +91,13 @@ const LoginPage: React.FC = () => {
           email : EmailOwner,
           password : Password
             });
+
+            localStorage.setItem("token", reponse.data['token']);
             console.log(reponse.data['id']);
-            history.push(`/main/${reponse.data['id']}`);
+            history.push(`/main`);
       } catch(error) {
         alert(error.response.data.message);
       }
-      
-      
-      // console.log("🚀 ~ file: index.tsx ~ line 70 ~ handleSubmit ~ reponse_store", reponse_store);
-      // console.log("🚀 ~ file: index.tsx ~ line 75 ~ handleSubmit ~ reponse_employee", reponse_employee);
-      // alert(reponse_store.data['message']);
-
-      // if (reponse_store.data['message'] === 'Please provide an email and passaword' || reponse_store.data['message'] === 'Email or Password is incorrect'){
-      //   history.push('/login');
-      // }
       
   }
 
