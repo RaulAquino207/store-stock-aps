@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Styles } from "./styles";
+import api from '../../services/api'
 
 // import { Container } from './styles';
 
 const MainPage: React.FC = () => {
 
   const history = useHistory();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -14,25 +16,41 @@ const MainPage: React.FC = () => {
     if(!token){
       history.push('/login');
     }
+
+    async function loadProduct() {
+      const response = await api.get('/products', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+
+      // console.log(response.data);
+
+      const { result } = response.data;
+      console.log(result);
+
+      result.map((_product: any) => console.log(_product.product_image));
+      setProducts(result);
+    }
+
+    loadProduct();
+    
   });
 
   return (
       <Styles>
           <h1> MAIN </h1>
-          <ul>
-            <li>
-              <img src="https://lh3.googleusercontent.com/proxy/ZwdVYDtwLLzwnlbsY9zFDJKSt5e-sFtTPuhH2lm9IZxcFIzX8W51FlKEZ92De7IWn1hxO4oWUjrA-gKBMHVoZAnsh_9zcB1CAQRd-EgJywu-gHnO6UGUQ3LPwd1ad6k2Q8mzm6Uq6Viy7F9on_r9"></img>
-            </li>
-            <li>
-              <img src="https://lh3.googleusercontent.com/proxy/ZwdVYDtwLLzwnlbsY9zFDJKSt5e-sFtTPuhH2lm9IZxcFIzX8W51FlKEZ92De7IWn1hxO4oWUjrA-gKBMHVoZAnsh_9zcB1CAQRd-EgJywu-gHnO6UGUQ3LPwd1ad6k2Q8mzm6Uq6Viy7F9on_r9"></img>
-            </li>
-            <li>
-              <img src="https://lh3.googleusercontent.com/proxy/ZwdVYDtwLLzwnlbsY9zFDJKSt5e-sFtTPuhH2lm9IZxcFIzX8W51FlKEZ92De7IWn1hxO4oWUjrA-gKBMHVoZAnsh_9zcB1CAQRd-EgJywu-gHnO6UGUQ3LPwd1ad6k2Q8mzm6Uq6Viy7F9on_r9"></img>
-            </li>
-            <li>
-              <img src="https://lh3.googleusercontent.com/proxy/ZwdVYDtwLLzwnlbsY9zFDJKSt5e-sFtTPuhH2lm9IZxcFIzX8W51FlKEZ92De7IWn1hxO4oWUjrA-gKBMHVoZAnsh_9zcB1CAQRd-EgJywu-gHnO6UGUQ3LPwd1ad6k2Q8mzm6Uq6Viy7F9on_r9"></img>
-            </li>
-          </ul>
+            <ul>
+              {products.map((_product: any) =>  (
+                <li key={_product._id}>
+                  <img src={_product.product_image} alt={_product.product_name}></img>
+                  {/* <img src="https://lh5.googleusercontent.com/okKx_ro1NlWvtAoD6oNIK_1fe67jTxR28uC3WyaH4pPQLSSFen1XC8idilcddin-56yPC8YGaTVh5fS75KlX=w2630-h1700-rw"></img> */}
+                  <footer>
+                  <strong>
+                    {_product.product_name}
+                  </strong>
+                </footer>
+                </li>
+              ))}
+            </ul>
       </Styles>
   );
 }

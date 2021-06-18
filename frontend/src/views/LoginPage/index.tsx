@@ -73,7 +73,7 @@ const LoginPage: React.FC = () => {
 
               localStorage.setItem("token", reponse.data['token']);
               console.log(reponse.data['id']);
-              history.push(`/main/${reponse.data['id']}`);
+              history.push(`/main`);
         } catch(error) {
           alert(error.response.data.message);
         }
