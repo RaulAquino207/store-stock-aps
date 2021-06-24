@@ -9,4 +9,10 @@ export const Styles: any = styled.div`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+
+
+  .image{
+    width: 250px;
+    height: 250px;
+  }
 `;
