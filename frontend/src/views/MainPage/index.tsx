@@ -44,6 +44,7 @@ const MainPage: React.FC = () => {
           {}
             <ul>
               {products.map((_product: any) =>  (
+                <div>
                 <li key={_product._id}>
                   <img className="image" src={_product.product_image} alt={_product.product_name}></img>
                   {/* <img src="https://lh5.googleusercontent.com/okKx_ro1NlWvtAoD6oNIK_1fe67jTxR28uC3WyaH4pPQLSSFen1XC8idilcddin-56yPC8YGaTVh5fS75KlX=w2630-h1700-rw"></img> */}
@@ -53,6 +54,7 @@ const MainPage: React.FC = () => {
                   </strong>
                 </footer>
                 </li>
+                </div>
               ))}
             </ul>
       </Styles>
