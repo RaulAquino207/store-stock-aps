@@ -36,7 +36,10 @@ module.exports = {
     },
 
     delete(req, res){
-
+        const { id } = req.params;
+        db.query(`DELETE from livros WHERE id=${id};`, async function (err, result) {
+            
+        })
     },
 
     index(req, res) {
