@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
 
   const history = useHistory();
   const [products, setProducts] = useState([]);
-  const [buttons, setButtons] = useState([]);
+  // const [buttons, setButtons] = useState([]);
 
   
 

@@ -21,5 +21,7 @@ routes.get('/section', sectionController.index);
 routes.post('/employee/login', employeeController.login);
 routes.post('/employee/:id', employeeController.store);
 routes.get('/employee', employeeController.index);
+routes.put('/employee/:id', employeeController.alter);
+routes.delete('/employee/:id', employeeController.alter);
 
 module.exports = routes;

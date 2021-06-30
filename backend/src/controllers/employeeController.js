@@ -31,6 +31,14 @@ module.exports = {
           });
     },
 
+    alter(req ,res){
+
+    },
+
+    delete(req, res){
+
+    },
+
     index(req, res) {
         db.query("SELECT * FROM store_stock_aps.tbemployee;", function (err, result) {
           if (err) throw err;
