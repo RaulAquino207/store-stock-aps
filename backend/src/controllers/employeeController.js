@@ -32,13 +32,19 @@ module.exports = {
     },
 
     alter(req ,res){
-
+        const { id } = req.params;
+        const { employee_name, email, section_id } = req.body;
+        db.query(`UPDATE store_stock_aps.tbemployee SET employee_name = '${employee_name}', email = '${email}', section_id = '${section_id}' WHERE (employee_id = '${id}');`, function (err, result) {
+            if (err) throw err;
+            res.json({result});
+          });
     },
 
     delete(req, res){
         const { id } = req.params;
-        db.query(`DELETE from livros WHERE id=${id};`, async function (err, result) {
-            
+        db.query(`DELETE FROM store_stock_aps.tbemployee WHERE (employee_id = '${id}');`, async function (err, result) {
+            if (err) throw err;
+            res.json({result});
         })
     },
 
