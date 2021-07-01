@@ -20,6 +20,23 @@ module.exports = {
           });
     },
 
+    alter(req ,res){
+        const { id } = req.params;
+        const { section_name } = req.body;
+        db.query(`UPDATE store_stock_aps.tbsection SET section_name = '${section_name}' WHERE (section_id = '${id}');`, function (err, result) {
+            if (err) throw err;
+            res.json({result});
+          });
+    },
+
+    delete(req, res){
+        const { id } = req.params;
+        db.query(`DELETE FROM store_stock_aps.tbsection WHERE (section_id = '${id}');`, async function (err, result) {
+            if (err) throw err;
+            res.json({result});
+        })
+    },
+
     index(req, res) {
         db.query("SELECT * FROM store_stock_aps.tbsection;", function (err, result) {
           if (err) throw err;

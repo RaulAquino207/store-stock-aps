@@ -14,11 +14,13 @@ routes.post('/store', storeController.store);
 
 routes.post('/products/:id', productController.store);
 routes.get('/products', productController.index);
-routes.patch('/products/:id', employeeController.alter);
-routes.delete('/products/:id', employeeController.delete);
+routes.patch('/products/:id', productController.alter);
+routes.delete('/products/:id', productController.delete);
 
 routes.post('/section/:id', sectionController.store);
 routes.get('/section', sectionController.index);
+routes.patch('/section/:id', sectionController.alter);
+routes.delete('/section/:id', sectionController.delete);
 
 routes.post('/employee/login', employeeController.login);
 routes.post('/employee/:id', employeeController.store);

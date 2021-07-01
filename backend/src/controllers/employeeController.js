@@ -15,7 +15,6 @@ module.exports = {
     store(req, res) {
         const { id } = req.params;
 
-        console.log("🚀 ~ file: employeeController.js ~ line 16 ~ store ~ user", id)
         const { employee_name, email, section_id } = req.body;
 
         function generateToken() {
