@@ -14,6 +14,8 @@ routes.post('/store', storeController.store);
 
 routes.post('/products/:id', productController.store);
 routes.get('/products', productController.index);
+routes.patch('/products/:id', employeeController.alter);
+routes.delete('/products/:id', employeeController.delete);
 
 routes.post('/section/:id', sectionController.store);
 routes.get('/section', sectionController.index);

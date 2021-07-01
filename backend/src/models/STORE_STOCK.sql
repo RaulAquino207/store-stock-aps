@@ -44,6 +44,7 @@ CREATE TABLE tbProduct
 product_name VARCHAR(100) NOT NULL,
 product_image VARCHAR(300),
 minimum_quantity INT,
+current_quantity INT,
 
 section_id INT,
 store_id INT,
