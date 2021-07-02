@@ -72,7 +72,6 @@ const LoginPage: React.FC = () => {
               });
 
               localStorage.setItem("token", reponse.data['token']);
-              localStorage.setItem("token", reponse.data['id']);
               console.log(reponse.data['id']);
               history.push(`/main`);
         } catch(error) {
