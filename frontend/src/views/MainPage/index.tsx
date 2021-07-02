@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Styles } from "./styles";
 import api from '../../services/api'
+import Sidebar from '../../components/Sidebar';
 
 // import { Container } from './styles';
 
@@ -39,6 +40,8 @@ const MainPage: React.FC = () => {
   });
 
   return (
+    <div>
+      <Sidebar/>
       <Styles>
           <h1> MAIN </h1>
           {}
@@ -58,6 +61,7 @@ const MainPage: React.FC = () => {
               ))}
             </ul>
       </Styles>
+    </div>
   );
 }
 

@@ -1,9 +1,15 @@
 import React from 'react';
-
-// import { Container } from './styles';
+import { FaBars } from 'react-icons/fa';
+import { StyledSidebar } from './styles';
 
 const Sidebar: React.FC = () => {
-  return <div />;
+  return (
+    <StyledSidebar>
+      <FaBars/>
+    </StyledSidebar>
+  )
+  
+
 }
 
 export default Sidebar;

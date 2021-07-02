@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Styles: any = styled.div`
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
