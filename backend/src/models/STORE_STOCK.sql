@@ -34,7 +34,8 @@ store_id INT,
 PRIMARY KEY (employee_id),
 
 CONSTRAINT fk_tbSection_tbEmployee FOREIGN KEY (section_id)
-REFERENCES tbSection (section_id),
+REFERENCES tbSection (section_id) ON DELETE CASCADE
+ON UPDATE CASCADE,
 
 CONSTRAINT fk_tbStore_tbEmployee FOREIGN KEY (store_id)
 REFERENCES tbStore (store_id) ON DELETE CASCADE
