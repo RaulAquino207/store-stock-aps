@@ -44,17 +44,16 @@ const MainPage: React.FC = () => {
       <Sidebar/>
       <Styles>
           <h1> MAIN </h1>
-          {}
             <ul>
               {products.map((_product: any) =>  (
-                <div>
+                <div className="card">
                 <li key={_product._id}>
                   <img className="image" src={_product.product_image} alt={_product.product_name}></img>
-                  {/* <img src="https://lh5.googleusercontent.com/okKx_ro1NlWvtAoD6oNIK_1fe67jTxR28uC3WyaH4pPQLSSFen1XC8idilcddin-56yPC8YGaTVh5fS75KlX=w2630-h1700-rw"></img> */}
                   <footer>
-                  <strong>
-                    {_product.product_name}
-                  </strong>
+                  <div className="container">
+                    <h4><b>{_product.product_name}</b></h4>
+                    <p>{_product.current_quantity}</p>
+                  </div>
                 </footer>
                 </li>
                 </div>
