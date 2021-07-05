@@ -1,10 +1,12 @@
 import React from 'react';
+import Sidebar from '../../components/Sidebar';
 
 // import { Container } from './styles';
 
 const ProductPage: React.FC = () => {
   return <div>
-        <h1>Section</h1>
+    <Sidebar/>
+        <h1>Product</h1>
     </div>;
 }
 
