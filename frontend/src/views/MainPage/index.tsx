@@ -10,9 +10,6 @@ const MainPage: React.FC = () => {
 
   const history = useHistory();
   const [products, setProducts] = useState([]);
-  // const [buttons, setButtons] = useState([]);
-
-  
 
   useEffect(() => {
     const token = localStorage.getItem("token");

@@ -1,55 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
 import { StyledSection } from './styles';
 import ButtonsCRUD from '../../components/ButtonsCRUD';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@material-ui/data-grid';
+import api from '../../services/api';
+import { useEffect } from 'react';
 
 // import { Container } from './styles';
 
 const SectionPage: React.FC = () => {
 
-  const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    {
-      field: 'firstName',
-      headerName: 'First name',
-      width: 150,
-      editable: true,
-    },
-    {
-      field: 'lastName',
-      headerName: 'Last name',
-      width: 150,
-      editable: true,
-    },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 110,
-      editable: true,
-    },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params: GridValueGetterParams) =>
-        `${params.getValue(params.id, 'firstName') || ''} ${
-          params.getValue(params.id, 'lastName') || ''
-        }`,
-    },
-  ];
+  const [sections, setSections] = useState([]);
+
+  useEffect(() => {
+
+    async function loadSections() {
+      const response = await api.get('/section');
+  
+      const { result } = response.data;
+      // console.log(result);
+  
+      setSections(result);
+  
+    }
+
+    loadSections();
+
+  })
+
 
   return <div>
     <Sidebar/>
     <StyledSection>
     <ButtonsCRUD/>
-        <h1>Section</h1>
-        <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={[
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 }]} columns={columns} pageSize={5} checkboxSelection />
+        <h1>Sections</h1>
+        <div className="table">
+          {/* {console.log(sections)} */}
+        <DataGrid rows={sections.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'section_id', headerName: 'ID'}, {field: 'section_name', headerName: 'Section', width: 150, editable: true}, {field : 'store_id', headerName: 'Store ID', width: 150}]} pageSize={5} checkboxSelection />
       </div>
       </StyledSection>
     </div>;
