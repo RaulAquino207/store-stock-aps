@@ -1,40 +1,62 @@
 import styled from 'styled-components';
 
 export const Styles: any = styled.div`
-  background-color: #282c34;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+background-color: #141e30;
+.main-container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+    background-color: #141e30;
+}
+.main-container h1 {
+  color: #FFF;
+}
 
-  ul, li{
-    list-style:none;
-    list-style-type:none;
-  }
+.main-container ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    margin-top: 50px;
+}
 
-  .image{
-    width: 200px;
-    height: 200px;
+.main-container ul li {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container ul li img {
+    max-width: 100%;
     border-radius: 5px 5px 0 0;
-  }
+}
 
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
-    margin-bottom: 5px;
-    background-color: #61dafb;
-  }
+.main-container ul li footer {
+    flex: 1;
+    background: #FFF;
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+}
 
+.main-container ul li footer strong {
+    font-size: 16px;
+    color: #333;
+}
 
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
+.main-container ul li footer p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #999;
+    margin-top: 5px;
+}
 
-  .container {
-    padding: 2px 16px;
-  }
+.main-container .empty {
+    font-size: 32px;
+    color: #999;
+    font-weight: bold;
+    margin-top: 300px;
+}
+
 `;

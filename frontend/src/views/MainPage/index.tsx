@@ -39,29 +39,30 @@ const MainPage: React.FC = () => {
     
   });
 
-  return (
-    <div>
-      <Sidebar/>
-      <Styles>
-          <h1> MAIN </h1>
-            <ul>
-              {products.map((_product: any) =>  (
-                <div className="card">
-                <li key={_product._id}>
-                  <img className="image" src={_product.product_image} alt={_product.product_name}></img>
-                  <footer>
-                  <div className="container">
-                    <h4><b>{_product.product_name}</b></h4>
-                    <p>{_product.current_quantity}</p>
-                  </div>
-                </footer>
-                </li>
-                </div>
-              ))}
-            </ul>
-      </Styles>
+  return (<div>
+  <Sidebar/>
+  <Styles>
+  <div className="main-container">
+    <h1>Products in stock</h1>
+    {<ul>
+      {products.map((_product: any) => (
+        <li key={_product._id}>
+          <img className="image" src={_product.product_image} alt={_product.product_name}></img>
+          <footer>
+            <strong>
+              {_product.product_name}
+            </strong>
+            <p>
+            current quantity : {_product.current_quantity}
+            </p>
+          </footer>
+        </li>
+      ))}  
+      
+    </ul>}
     </div>
-  );
+  </Styles>
+  </div>);
 }
 
 export default MainPage;
