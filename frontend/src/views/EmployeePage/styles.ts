@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Styles: any = styled.div`
+export const StyledEmployee: any = styled.div`
     text-align: center;
     background-color: #141e30;
     min-height: 100vh;
@@ -10,4 +10,18 @@ export const Styles: any = styled.div`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    .table{
+        /* background-color : #FFF;
+        border-radius: 5px;
+        flex-direction: center;
+        text-align: center;
+        align-items: center;
+        justify-content: center; */
+        height: 400px; 
+        width: 40%;
+        background-color : #FFF;
+        border-radius: 5px;
+        margin-left: 30%;
+    }
 `;

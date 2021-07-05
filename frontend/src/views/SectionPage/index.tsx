@@ -14,8 +14,12 @@ const SectionPage: React.FC = () => {
 
   useEffect(() => {
 
+    const token = localStorage.getItem("token");
+
     async function loadSections() {
-      const response = await api.get('/section');
+      const response = await api.get('/section', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
   
       const { result } = response.data;
       // console.log(result);
@@ -36,7 +40,7 @@ const SectionPage: React.FC = () => {
         <h1>Sections</h1>
         <div className="table">
           {/* {console.log(sections)} */}
-        <DataGrid rows={sections.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'section_id', headerName: 'ID'}, {field: 'section_name', headerName: 'Section', width: 150, editable: true}, {field : 'store_id', headerName: 'Store ID', width: 150}]} pageSize={5} checkboxSelection />
+        <DataGrid checkboxSelection={false} rows={sections.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'section_id', headerName: 'ID'}, {field: 'section_name', headerName: 'Section', width: 150, editable: true}, {field : 'store_id', headerName: 'Store ID', width: 150}]} pageSize={5} />
       </div>
       </StyledSection>
     </div>;
