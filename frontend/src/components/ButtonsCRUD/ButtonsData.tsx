@@ -3,12 +3,12 @@ import { MdCreate } from 'react-icons/md';
 import { MdDeleteForever } from 'react-icons/md';
 
 export const ButtonsData = [
-    {
-        title : 'Create',
-        path: '/main',
-        icon: <BsPlusSquareFill/>,
-        cName: 'nav-text'
-    },
+    // {
+    //     title : 'Create',
+    //     path: '/main',
+    //     icon: <BsPlusSquareFill/>,
+    //     cName: 'nav-text'
+    // },
     {
         title : 'Alter',
         path: '/main/section',

@@ -24,4 +24,9 @@ export const StyledEmployee: any = styled.div`
         border-radius: 5px;
         margin-left: 30%;
     }
+
+    .buttons {
+        display: flex;
+        margin-left: 65%;
+    }
 `;
