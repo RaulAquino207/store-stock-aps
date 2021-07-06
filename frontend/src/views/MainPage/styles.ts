@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const Styles: any = styled.div`
-background-color: #141e30;
+background-color: #141e30;  
+height: 1080px;
+width: 100%;
+overflow: hidden;
 .main-container {
-    max-width: 980px;
     margin: 0 auto;
     padding: 50px 0;
     text-align: center;
