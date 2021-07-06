@@ -11,4 +11,61 @@ export const Styles: any = styled.div`
     justify-content: center;
     overflow: hidden;
 
+    form {
+        display: flex;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    fieldset {
+        border-width: 3px;
+        border-style: solid;
+        border-color: #FFF;
+        border-radius: 15px;
+        background-color: #243b55;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    legend {
+        background-color: #61dafb;
+        border-radius: 4px;
+        border-color: #FFF;
+    }
+
+    form input {
+        margin-top: 10px;
+        border: 1px #61dafb;
+        border-radius: 4px;
+        height: 48px;
+        padding: 0 35px;
+        font-size: 16px;
+        color: #666;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    /* .input {
+        display: none
+    } */
+
+    form input ::placeholder {
+        color: #999999;
+    }
+
+    form button[type=submit] {
+        margin-top: 10px;
+        border: 0;
+        border-radius: 4px;
+        height: 48px;
+        font-size: 16px;
+        background: #61dafb;
+        font-weight: bold;
+        padding: 0 60px;
+        color: #FFF;
+        cursor: pointer;
+    }
+
 `

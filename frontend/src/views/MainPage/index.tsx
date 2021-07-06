@@ -28,7 +28,7 @@ const MainPage: React.FC = () => {
       const { result } = response.data;
       // console.log(result);
 
-      result.map((_product: any) => console.log(_product.product_image));
+      // result.map((_product: any) => console.log(_product.product_image));
       setProducts(result);
     }
 
