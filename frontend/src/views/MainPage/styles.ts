@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Styles: any = styled.div`
 background-color: #141e30;  
 height: 1080px;
-width: 100%;
 overflow: hidden;
+
 .main-container {
     margin: 0 auto;
     padding: 50px 0;
@@ -18,9 +18,11 @@ overflow: hidden;
 .main-container ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 30px;
     margin-top: 50px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .main-container ul li {
