@@ -119,20 +119,21 @@ export default function CustomizedSelects() {
             <fieldset>
             <legend>Employee</legend>
             <div className="workaround">
+            <legend className="label-input">Employee name</legend>
               <input
                   type="text"
-                  placeholder="Type employee name"
                   value={employeeName}
                   onChange={ e => setEmployeeName(e.target.value)}
               />
+              <legend className="label-input">Employee email</legend>
               <input
                   type="text"
-                  placeholder="Type employee email"
                   value={email}
                   onChange={ e => setEmail(e.target.value)}
               />
         <FormControl className={classes.margin}>
-        <InputLabel id="demo-customized-select-label">section</InputLabel>
+        <legend className="label-input">Section</legend>
+        <InputLabel id="demo-customized-select-label"></InputLabel>
         <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"

@@ -40,6 +40,13 @@ export const Styles: any = styled.div`
         border-color: #FFF;
     }
 
+    .label-input{
+        background-color: #141e30 !important;
+        font-size: 15px;
+        width:150px;
+        margin-top: 10px;
+    }
+
     input {
         margin-top: 10px;
         border: 1px #61dafb;

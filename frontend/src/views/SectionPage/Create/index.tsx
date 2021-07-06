@@ -44,9 +44,9 @@ const CreateSectionPage: React.FC = () => {
             <fieldset>
             <legend>Section Create</legend>
             <div className="workaround">
+            <legend className="label-input">Section name</legend>
               <input
                   type="text"
-                  placeholder="Type section name"
                   value={sectionName}
                   onChange={ e => setSectionName(e.target.value)}
               />

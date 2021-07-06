@@ -123,32 +123,33 @@ export default function CustomizedSelects() {
             <fieldset>
             <legend>Product</legend>
             <div className="workaround">
+            <legend className="label-input">Product name</legend>
               <input
                   type="text"
-                  placeholder="Type product name"
                   value={productName}
                   onChange={ e => setProductName(e.target.value)}
               />
+              <legend className="label-input">Product image</legend>
               <input
                   type="text"
-                  placeholder="Type url image"
                   value={productImage}
                   onChange={ e => setProductImage(e.target.value)}
               />
+              <legend className="label-input">Minimum quantity</legend>
               <input
                   type="number"
-                  placeholder="Type minimum quantity"
                   value={minimumQuantity}
                   onChange={ e => setMinimumQuantity(e.target.valueAsNumber)}
               />
+              <legend className="label-input">Current quantity</legend>
               <input
                   type="number"
-                  placeholder="Type current quantity"
                   value={currentQuantity}
                   onChange={ e => setCurrentQuantity(e.target.valueAsNumber)}
               />
+            <legend className="label-input">Section</legend>
         <FormControl className={classes.margin}>
-        <InputLabel id="demo-customized-select-label">section</InputLabel>
+        <InputLabel id="demo-customized-select-label"></InputLabel>
         <Select
           labelId="demo-customized-select-label"
           id="demo-customized-select"
