@@ -13,21 +13,25 @@ const CreateSectionPage: React.FC = () => {
 
   const id = localStorage.getItem("id");
 
-  async function handleSubmitStore(e: any){
+  async function handleSubmit(e: any){
     e.preventDefault();
 
     console.log(sectionName);
 
-    try{
-      await api.post(`section/${id}`, {
-        section_name : sectionName
-          });
-          alert('Section created successfully')
-          history.push(`/main/section`);
-    } catch(error) {
-      alert(error.response.data.message);
+    if(sectionName == ''){
+      alert('Please provide a valid value');
+    } else {
+      try{
+        await api.post(`section/${id}`, {
+          section_name : sectionName
+            });
+            alert('Section created successfully')
+            history.push(`/main/section`);
+      } catch(error) {
+        alert(error.response.data.message);
+      }
     }
-    
+
 }
 
 
@@ -35,17 +39,19 @@ const CreateSectionPage: React.FC = () => {
       <Sidebar/>
       <Styles>
       <h1>CREATE SECTION</h1>
-      <form onSubmit={handleSubmitStore} >
+      <form onSubmit={handleSubmit} >
             
             <fieldset>
-            <legend>Section Name</legend>
-            <input
-                type="text"
-                placeholder="Type section name"
-                value={sectionName}
-                onChange={ e => setSectionName(e.target.value)}
-            />
-            <button type="submit">Add Section</button>
+            <legend>Section Create</legend>
+            <div className="workaround">
+              <input
+                  type="text"
+                  placeholder="Type section name"
+                  value={sectionName}
+                  onChange={ e => setSectionName(e.target.value)}
+              />
+              <button type="submit">Add Section</button>
+            </div>
             </fieldset>
         </form>
       </Styles>
