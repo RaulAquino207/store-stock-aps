@@ -7,9 +7,9 @@ import Register from '../views/RegisterPage';
 import SectionPage from '../views/SectionPage'
 import EmployeePage from '../views/EmployeePage'
 import ProductPage from '../views/ProductPage'
-import CreateSectionPage from '../views/SectionPage/Create';
-import CreateEmployeePage from '../views/EmployeePage/Create';
-import CreateProductPage from '../views/ProductPage/Create';
+import CreateSectionPage from '../views/SectionPage/Create'
+import CreateEmployeePage from '../views/EmployeePage/Create'
+import CreateProductPage from '../views/ProductPage/Create'
 
 // import { Container } from './styles';
 
@@ -19,9 +19,9 @@ const routes: React.FC = () => {
   <Route path="/main" exact component={Main}/>
   <Route path="/login" component={Login}/>
   <Route path="/register" component={Register}/>
-  <Route path="/main/section" component={SectionPage}/>
-  <Route path="/main/employee" component={EmployeePage}/>
-  <Route path="/main/product" component={ProductPage}/>
+  <Route path="/main/section" exact component={SectionPage}/>
+  <Route path="/main/employee" exact component={EmployeePage}/>
+  <Route path="/main/product" exact component={ProductPage}/>
   <Route path="/main/section/create" component={CreateSectionPage}/>
   <Route path="/main/employee/create" component={CreateEmployeePage}/>
   <Route path="/main/product/create" component={CreateProductPage}/>

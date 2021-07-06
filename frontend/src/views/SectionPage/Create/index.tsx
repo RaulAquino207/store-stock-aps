@@ -4,7 +4,7 @@ import { Styles } from './styles';
 
 // import { Container } from './styles';
 
-const Create: React.FC = () => {
+const CreateSectionPage: React.FC = () => {
   return <div>
       <Sidebar/>
       <Styles>
@@ -13,4 +13,4 @@ const Create: React.FC = () => {
   </div>;
 }
 
-export default Create;
+export default CreateSectionPage;

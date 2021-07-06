@@ -7,6 +7,8 @@ import { StyledEmployee } from './styles';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AlterIcon from '@material-ui/icons/Edit'
+import { Link } from 'react-router-dom';
+import { IoMdAddCircle } from 'react-icons/io';
 
 // import { Container } from './styles';
 
@@ -70,6 +72,9 @@ const EmployeePage: React.FC = () => {
         </div>
       <div className="table">
       <DataGrid checkboxSelection={true} onSelectionModelChange={itm => setChecks(itm)} rows={employees.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'employee_id', headerName: 'ID'}, {field: 'employee_name', headerName: 'Employee', width: 150}, {field: 'email', headerName: 'Email', width: 150}, {field: 'token_login', headerName: 'Token', width: 150}, {field: 'section_id', headerName: 'Section', width: 150}, {field: 'store_id', headerName: 'Store', width: 150}]} pageSize={5} />
+      <Link to={'/main/employee/create'}>
+          <IoMdAddCircle style={{color : `#FFF`}}/>
+      </Link>
     </div>
     </StyledEmployee>
   </div>;

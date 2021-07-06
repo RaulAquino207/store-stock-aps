@@ -7,6 +7,8 @@ import { StyledProduct } from './styles';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AlterIcon from '@material-ui/icons/Edit'
+import { Link } from 'react-router-dom';
+import { IoMdAddCircle } from 'react-icons/io';
 
 // import { Container } from './styles';
 
@@ -69,6 +71,9 @@ const ProductPage: React.FC = () => {
         </div>
       <div className="table">
       <DataGrid checkboxSelection={true} onSelectionModelChange={itm => setChecks(itm)} rows={products.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'product_id', headerName: 'ID'}, {field: 'product_name', headerName: 'Product', width: 150}, {field: 'product_image', headerName: 'Link', width: 150}, {field: 'minimum_quantity', headerName: 'Min', width: 150}, {field: 'current_quantity', headerName: 'Current', width: 150}, {field: 'section_id', headerName: 'Section', width: 150}, {field: 'store_id', headerName: 'Store', width: 150}]} pageSize={5} />
+      <Link to={'/main/product/create'}>
+          <IoMdAddCircle style={{color : `#FFF`}}/>
+      </Link>
     </div>
     </StyledProduct>
   </div>;

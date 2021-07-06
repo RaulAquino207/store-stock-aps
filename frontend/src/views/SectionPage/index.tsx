@@ -8,6 +8,8 @@ import AlterIcon from '@material-ui/icons/Edit'
 import { DataGrid } from '@material-ui/data-grid';
 import api from '../../services/api';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { IoMdAddCircle } from 'react-icons/io';
 
 // import { Container } from './styles';
 
@@ -73,6 +75,9 @@ const SectionPage: React.FC = () => {
         <div className="table">
           {/* {console.log(sections)} */}
         <DataGrid checkboxSelection={true} onSelectionModelChange={itm => setChecks(itm)} rows={sections.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'section_id', headerName: 'ID'}, {field: 'section_name', headerName: 'Section', width: 150, editable: true}, {field : 'store_id', headerName: 'Store ID', width: 150}]} pageSize={5} />
+        <Link to={'/main/section/create'}>
+          <IoMdAddCircle style={{color : `#FFF`}}/>
+        </Link>
       </div>
       </StyledSection>
     </div>;
