@@ -13,12 +13,20 @@ export const Styles: any = styled.div`
         justify-content: center;
         align-items: center;
 
+
         .container{
             background-color: #243b55;
             color: #000;
-            width: 60%;
+            width: 45%;
             height: 60%;
             border-radius: 20px;
+
+            .content{
+                display: flex;
+                justify-content: center;
+                height: 80%;
+                align-items: center;
+            }
 
             .close{
                 background-color: transparent;
