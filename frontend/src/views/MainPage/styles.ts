@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Styles: any = styled.div`
 background-color: #141e30;  
-height: 1080px;
+height: 100vh;
 overflow: hidden;
 
 .main-container {

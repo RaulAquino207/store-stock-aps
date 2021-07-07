@@ -1,6 +1,5 @@
 import { DataGrid } from '@material-ui/data-grid';
 import React, { useEffect, useState } from 'react';
-import ButtonsCRUD from '../../components/ButtonsCRUD';
 import Sidebar from '../../components/Sidebar';
 import api from '../../services/api';
 import { StyledProduct } from './styles';

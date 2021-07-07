@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar';
 import { StyledSection } from './styles';
-import ButtonsCRUD from '../../components/ButtonsCRUD';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AlterIcon from '@material-ui/icons/Edit'
@@ -10,6 +9,7 @@ import api from '../../services/api';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdAddCircle } from 'react-icons/io';
+import Alter from './Alter';
 
 // import { Container } from './styles';
 
@@ -18,25 +18,39 @@ const SectionPage: React.FC = () => {
   const [sections, setSections] = useState([]);
   const [checks, setChecks] = useState(Object);
 
+  const [showModal, setShowModal] = useState(false); 
+
   async function onClickDelete(e : any){
     e.preventDefault();
-    console.log('Deletando', checks['selectionModel']['length']);
+    console.log('Deletando');
 
-    for (let index = 0; index < checks['selectionModel']['length']; index++) {
-      const element = checks['selectionModel'][index];
-      console.log(sections[element]['section_id']);
-
-      await api.delete(`/section/${sections[element]['section_id']}`)
+    try {
+      for (let index = 0; index < checks['selectionModel']['length']; index++) {
+        const element = checks['selectionModel'][index];
+        console.log(sections[element]['section_id']);
+  
+        await api.delete(`/section/${sections[element]['section_id']}`)
+      }
+    } catch (error) {
+      alert(error);
     }
 
   }
 
   function onClickAlter(e : any){
     e.preventDefault();
-    console.log('Alterando', checks);
-    if(checks['selectionModel']['length'] > 1){
-      alert('To change select only 1')
+    console.log('Alterando');
+    try {
+      if(checks == undefined  || checks['selectionModel']['length'] != 1){
+        alert('To change select only 1')
+      } else {
+        setShowModal(showModal => !showModal);
+      }
+    } catch (error) {
+      alert(error);
     }
+
+    
   }
 
   useEffect(() => {
@@ -78,6 +92,7 @@ const SectionPage: React.FC = () => {
         <Link to={'/main/section/create'}>
           <IoMdAddCircle style={{color : `#FFF`}}/>
         </Link>
+        <Alter id="modal" onClose={() => setShowModal(showModal => !showModal)} showModal={showModal} checks={checks}/>
       </div>
       </StyledSection>
     </div>;
