@@ -32,8 +32,8 @@ module.exports = {
 
     alter(req ,res){
         const { id } = req.params;
-        const { employee_name, email, section_id } = req.body;
-        db.query(`UPDATE store_stock_aps.tbemployee SET employee_name = '${employee_name}', email = '${email}', section_id = '${section_id}' WHERE (employee_id = '${id}');`, function (err, result) {
+        const { employee_name, email, token_login, section_id } = req.body;
+        db.query(`UPDATE store_stock_aps.tbemployee SET employee_name = '${employee_name}', email = '${email}', token_login = '${token_login}', section_id = '${section_id}' WHERE (employee_id = '${id}');`, function (err, result) {
             if (err) throw err;
             res.json({result});
           });

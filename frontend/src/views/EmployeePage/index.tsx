@@ -8,13 +8,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AlterIcon from '@material-ui/icons/Edit'
 import { Link } from 'react-router-dom';
 import { IoMdAddCircle } from 'react-icons/io';
+import Alter from './Alter';
 
 // import { Container } from './styles';
 
 const EmployeePage: React.FC = () => {
-
+  
   const [employees, setEmployees] = useState([]);
   const [checks, setChecks] = useState(Object);
+  
+  const [showModal, setShowModal] = useState(false);
+
+  const token = localStorage.getItem("token");
 
   async function onClickDelete(e : any){
     e.preventDefault();
@@ -24,7 +29,8 @@ const EmployeePage: React.FC = () => {
       const element = checks['selectionModel'][index];
       console.log(employees[element]['employee_id']);
 
-      await api.delete(`/employee/${employees[element]['employee_id']}`)
+      await api.delete(`/employee/${employees[element]['employee_id']}`);
+      window.location.reload();
     }
 
   }
@@ -32,14 +38,19 @@ const EmployeePage: React.FC = () => {
   function onClickAlter(e : any){
     e.preventDefault();
     console.log('Alterando');
-    if(checks['selectionModel']['length'] > 1){
-      alert('To change select only 1')
+    try {
+      if(checks == undefined  || checks['selectionModel']['length'] != 1){
+        alert('To change select only 1')
+      } else {
+        setShowModal(showModal => !showModal);
+      }
+    } catch (error) {
+      alert(error);
     }
   }
 
   useEffect(() => {
 
-    const token = localStorage.getItem("token");
 
     async function loadEmployees() {
       const response = await api.get('/employee', {
@@ -55,7 +66,7 @@ const EmployeePage: React.FC = () => {
 
     loadEmployees();
 
-  })
+  }, [token])
 
   return <div>
   <Sidebar/>
@@ -74,6 +85,7 @@ const EmployeePage: React.FC = () => {
       <Link to={'/main/employee/create'}>
           <IoMdAddCircle style={{color : `#FFF`}}/>
       </Link>
+      <Alter id="modal" onClose={() => setShowModal(showModal => !showModal)} showModal={showModal} checks={checks}/>
     </div>
     </StyledEmployee>
   </div>;

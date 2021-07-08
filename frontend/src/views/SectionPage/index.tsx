@@ -7,13 +7,17 @@ import AlterIcon from '@material-ui/icons/Edit'
 import { DataGrid } from '@material-ui/data-grid';
 import api from '../../services/api';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { IoMdAddCircle } from 'react-icons/io';
 import Alter from './Alter';
 
 // import { Container } from './styles';
 
 const SectionPage: React.FC = () => {
+
+  const token = localStorage.getItem("token");
+
+  const history = useHistory();
 
   const [sections, setSections] = useState([]);
   const [checks, setChecks] = useState(Object);
@@ -29,8 +33,10 @@ const SectionPage: React.FC = () => {
         const element = checks['selectionModel'][index];
         console.log(sections[element]['section_id']);
   
-        await api.delete(`/section/${sections[element]['section_id']}`)
+        await api.delete(`/section/${sections[element]['section_id']}`);
       }
+
+      window.location.reload();
     } catch (error) {
       alert(error);
     }
@@ -55,8 +61,6 @@ const SectionPage: React.FC = () => {
 
   useEffect(() => {
 
-    const token = localStorage.getItem("token");
-
     async function loadSections() {
       const response = await api.get('/section', {
         headers: { Authorization: `Bearer ${token}` }
@@ -71,7 +75,7 @@ const SectionPage: React.FC = () => {
 
     loadSections();
 
-  })
+  }, [token])
 
 
   return <div>
@@ -87,7 +91,6 @@ const SectionPage: React.FC = () => {
           </IconButton>
         </div>
         <div className="table">
-          {/* {console.log(sections)} */}
         <DataGrid checkboxSelection={true} onSelectionModelChange={itm => setChecks(itm)} rows={sections.map((section : any, index : any) => ({... section, id : index}))} columns={[{field: 'section_id', headerName: 'ID'}, {field: 'section_name', headerName: 'Section', width: 150, editable: true}, {field : 'store_id', headerName: 'Store ID', width: 150}]} pageSize={5} />
         <Link to={'/main/section/create'}>
           <IoMdAddCircle style={{color : `#FFF`}}/>

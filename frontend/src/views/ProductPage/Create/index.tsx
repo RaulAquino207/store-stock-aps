@@ -68,6 +68,7 @@ export default function CustomizedSelects() {
   const [sectionID, setSectionID] = React.useState('');
 
   const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setSectionID(event.target.value as string);
@@ -97,8 +98,6 @@ export default function CustomizedSelects() {
   
   React.useEffect(() => {
 
-    const token = localStorage.getItem("token");
-
     async function loadSections() {
       const response = await api.get('/section', {
         headers: { Authorization: `Bearer ${token}` }
@@ -113,7 +112,7 @@ export default function CustomizedSelects() {
 
     loadSections();
 
-  })
+  }, [token])
   return (
     <div>
       <Sidebar/>

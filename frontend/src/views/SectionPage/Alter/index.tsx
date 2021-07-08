@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Styles } from './styles';
 import api from '../../../services/api';
 import { useHistory } from 'react-router-dom';
+import Sidebar from '../../../components/Sidebar';
 
 // import { Container } from './styles';
 
@@ -20,6 +21,7 @@ const Alter: React.FC<Props> = ({id = "modal", onClose = () => {}, showModal, ch
   const [sectionId, setSectionId] = useState('');
 
   const history = useHistory();
+  const token = localStorage.getItem("token");
 
   const handleOutSideClick = (e : any) => {
     if(e.target.id === id){
@@ -27,9 +29,8 @@ const Alter: React.FC<Props> = ({id = "modal", onClose = () => {}, showModal, ch
     }
   }
 
+  // window.location.reload();
   useEffect(() => {
-
-    const token = localStorage.getItem("token");
 
     async function loadSections() {
       const response = await api.get('/section', {
@@ -50,7 +51,7 @@ const Alter: React.FC<Props> = ({id = "modal", onClose = () => {}, showModal, ch
       setSectionId(section_id);
     }
 
-  })
+  }, [showModal])
 
   async function handleSubmit(e: any){
     e.preventDefault();
@@ -64,7 +65,7 @@ const Alter: React.FC<Props> = ({id = "modal", onClose = () => {}, showModal, ch
             });
             alert(`Section changed successfully`)
             onClose();
-            history.push(`/main/section`);
+            window.location.reload();
       } catch(error) {
         alert(error.response.data.message);
       }

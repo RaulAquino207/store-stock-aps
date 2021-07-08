@@ -8,12 +8,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AlterIcon from '@material-ui/icons/Edit'
 import { Link } from 'react-router-dom';
 import { IoMdAddCircle } from 'react-icons/io';
+import Alter from './Alter';
 
 // import { Container } from './styles';
 
 const ProductPage: React.FC = () => {
+
+  const token = localStorage.getItem("token");
+  
   const [products, setProducts] = useState([]);
   const [checks, setChecks] = useState(Object);
+
+  const [showModal, setShowModal] = useState(false);
 
   async function onClickDelete(e : any){
     e.preventDefault();
@@ -23,7 +29,8 @@ const ProductPage: React.FC = () => {
       const element = checks['selectionModel'][index];
       console.log(products[element]['product_id']);
 
-      await api.delete(`/products/${products[element]['product_id']}`)
+      await api.delete(`/products/${products[element]['product_id']}`);
+      window.location.reload();
     }
 
   }
@@ -31,14 +38,18 @@ const ProductPage: React.FC = () => {
   function onClickAlter(e : any){
     e.preventDefault();
     console.log('Alterando');
-    if(checks['selectionModel']['length'] > 1){
-      alert('To change select only 1')
+    try {
+      if(checks == undefined  || checks['selectionModel']['length'] != 1){
+        alert('To change select only 1')
+      } else {
+        setShowModal(showModal => !showModal);
+      }
+    } catch (error) {
+      alert(error);
     }
   }
 
   useEffect(() => {
-
-    const token = localStorage.getItem("token");
 
     async function loadEmployees() {
       const response = await api.get('/products', {
@@ -54,7 +65,7 @@ const ProductPage: React.FC = () => {
 
     loadEmployees();
 
-  })
+  }, [token])
 
   return <div>
   <Sidebar/>
@@ -73,6 +84,7 @@ const ProductPage: React.FC = () => {
       <Link to={'/main/product/create'}>
           <IoMdAddCircle style={{color : `#FFF`}}/>
       </Link>
+      <Alter id="modal" onClose={() => setShowModal(showModal => !showModal)} showModal={showModal} checks={checks}/>
     </div>
     </StyledProduct>
   </div>;

@@ -72,6 +72,7 @@ const LoginPage: React.FC = () => {
               });
 
               localStorage.setItem("token", reponse.data['token']);
+              localStorage.setItem("id", reponse.data['id']);
               console.log(reponse.data['id']);
               history.push(`/main`);
         } catch(error) {
@@ -93,10 +94,11 @@ const LoginPage: React.FC = () => {
             });
 
             localStorage.setItem("token", reponse.data['token']);
+            localStorage.setItem("id", reponse.data['id']);
             console.log(reponse.data['id']);
             history.push(`/main`);
       } catch(error) {
-        alert(error.response.data.message);
+        alert(error);
       }
       
   }

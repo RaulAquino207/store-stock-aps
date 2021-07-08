@@ -28,7 +28,7 @@ const CreateSectionPage: React.FC = () => {
             alert('Section created successfully')
             history.push(`/main/section`);
       } catch(error) {
-        alert(error.response.data.message);
+        alert(error);
       }
     }
 
