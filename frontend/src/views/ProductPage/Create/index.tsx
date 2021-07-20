@@ -77,7 +77,7 @@ export default function CustomizedSelects() {
     e.preventDefault();
 
     if(productName == '' || productImage == '' || minimumQuantity == 0 || currentQuantity == 0){
-      alert('Please provide a valid value');
+      alert('Please provide a valid value. Please');
     } else {
       try{
         await api.post(`products/${id}`, {
