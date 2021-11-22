@@ -28,10 +28,11 @@ db.connect((error) => {
     if(error){
         console.log(error);
     } else {
-        console.log("🚀 ~ MYSQL Connected...")
+        console.log("🚀 ~ MYSQL Connected... ❤❤❤");
     }
 });
 
 server.listen(port, () => {
     console.log("🚀 ~ file: server.js ~ line 2 ~ port", port);
+
 });
